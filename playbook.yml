@@ -1,0 +1,29 @@
+---
+- hosts: servers
+  become: yes
+  gather_facts: yes
+
+  tasks: 
+    - name: Testando o módulo Ping com Playbook
+      ping:
+
+    - name: Criando um arquivo com o módulo lineinfile
+      lineinfile:
+        path: "~/arquivo1"
+        state: present
+        line: "Testando..."
+        create: yes
+
+    - name: Instalando o pacote apache2 nos servidores Debian-Like
+      apt:
+        name: apache2
+        state: present
+      when: 'ansible_distribution == "Ubuntu"'
+      tags: install_apache_ubuntu
+
+    - name: Instalando o pacote httpd nos servidores Centos
+      apt:
+        name: httpd
+        state: present
+      when: 'ansible_distribution == "Centos"'
+      tags: install_apache_centos

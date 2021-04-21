@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: awx
+  labels:
+    name: awx
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+  namespace: awx
+  labels:
+    name: awx
+spec:
+  tower_ingress_type: Ingress
+  tower_hostname: awx.rafaelcarreiro.com
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: awx-admin-password
+  namespace: awx
+  labels:
+    name: awx
+stringData:
+  password: Flisol2021
