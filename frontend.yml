@@ -1,0 +1,16 @@
+---
+- hosts: servers
+  become: yes
+
+  tasks:
+    - name: Criar diretorio /var/www/html 
+      file:
+        path: /var/www/html
+        state: directory
+        mode: '0755'
+
+    - name: Copiar template html para /var/www/html/
+      unarchive:
+        src: "files/html5up-forty.zip"
+        dest: "/var/www/html"
+

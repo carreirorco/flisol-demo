@@ -1,4 +1,5 @@
 ---
 - import_playbook: common.yml
-- import_playbook: configura_apache.yml
-
+- import_playbook: backend.yml
+- import_playbook: frontend.yml
+- import_playbook: alterar-html.yml
