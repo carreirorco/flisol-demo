@@ -1,0 +1,45 @@
+---
+- hosts: servers
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Instalando o pacote apache2 nos servidores Debian-Like
+      apt:
+        name: apache2
+        state: present
+      when: 'ansible_distribution == "Ubuntu"'
+      tags: install_apache_ubuntu
+
+    - name: Instalando o pacote httpd nos servidores Centos
+      yum:
+        name: httpd
+        state: present
+      when: 'ansible_distribution == "CentOS"'
+      tags: install_apache_centos
+
+    - name: Inicializar serviço apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      when: 'ansible_distribution == "Ubuntu"'
+
+    - name: Inicializar serviço apache
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: 'ansible_distribution == "CentOS"'
+
+    - name: Cria diretorio /var/www/html 
+      file:
+        path: /var/www/html
+        state: directory
+        mode: '0755'
+
+    - name: Copiar template html para /var/www/html/
+      unarchive:
+        src: "files/html5up-forty.zip"
+        dest: "/var/www/html"
+

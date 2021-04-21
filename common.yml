@@ -1,0 +1,10 @@
+---
+- hosts: servers
+  become: yes
+
+  tasks:
+    - name: Instala pacotes úteis
+      package:
+        name: ['unzip', 'vim', 'tmux']
+        state: present
+

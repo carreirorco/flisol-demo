@@ -24,6 +24,13 @@ Vagrant.configure("2") do |config|
         if "#{conf["image"]}" == "ubuntu/bionic64" or "#{conf["image"]}" == "debian/buster64"
           machine.vm.provision "shell", inline: "apt-get update ; apt-get install python -y; hostnamectl set-hostname #{name}.flisol.example"
         end
+#    config.vm.provision :ansible do |ansible|
+#    ansible.playbook = "playbook.yml"
+#  end
+    config.vm.provision "file", source: "flisol.pub", destination: "~/.ssh/flisol.pub"
+    config.vm.provision "shell", inline: <<-SHELL
+      cat /home/vagrant/.ssh/flisol.pub >> /home/vagrant/.ssh/authorized_keys
+    SHELL
     end
   end
 end
