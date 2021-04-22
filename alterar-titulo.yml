@@ -10,6 +10,6 @@
     - name: Mudar título da página
       lineinfile:
         path: /var/www/html/index.html
-        regexp: '<title>Forty by HTML5 UP</title>'
+        regexp: '<title>.*</title>'
         line: '<title>{{ titulo_da_pagina }}</title>'
         state: present
