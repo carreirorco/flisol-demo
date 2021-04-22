@@ -1,0 +1,9 @@
+---
+- hosts: servers
+  become: yes
+
+  tasks:
+    - name: remove conteúdo do diretório /var/www/html/
+      file:
+        path: /var/www/html
+        state: absent
