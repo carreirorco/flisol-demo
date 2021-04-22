@@ -3,8 +3,6 @@
   gather_facts: yes
   
   tasks:
-    - debug: var=hostvars[inventory_hostname]['ansible_all_ipv4_addresses'][0]
-    - debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
     - name: Verificar se o site está no ar
       uri: 
         url: "http://{{hostvars[inventory_hostname]['ansible_all_ipv4_addresses'][0]}}"
