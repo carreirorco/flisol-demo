@@ -3,10 +3,12 @@
   become: yes
   gather_facts: yes
 
+  vars:
+    - conteudo_h1: 'Neste servidor tem um {{ ansible_hostname }}!'
   tasks:
     - name: Mudar string do template para nome da distro
       lineinfile:
         path: /var/www/html/index.html
-        regexp: '<h1>Hi, my name is Forty</h1>'
-        line: '<h1>Neste servidor tem um {{ ansible_hostname }}!</h1>'
+        regexp: <h1>.*</h1>
+        line: '<h1>{{ conteudo_h1 }}</h1>'
         state: present
