@@ -1,0 +1,7 @@
+---
+- hosts: servers
+  become: yes
+
+  roles:
+    - { role: geerlingguy.apache }
+
