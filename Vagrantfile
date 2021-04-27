@@ -2,8 +2,8 @@
 # vi: set ft=ruby  :
 
 machines = {
-  "centos"    => {"memory" => "1536", "cpu" => "1", "ip" => "10", "image" => "centos/7"},
-  "ubuntu"    => {"memory" => "2048", "cpu" => "1", "ip" => "20", "image" => "ubuntu/bionic64"}
+  "centos"    => {"memory" => "1024", "cpu" => "1", "ip" => "10", "image" => "centos/7"},
+  "ubuntu"    => {"memory" => "1024", "cpu" => "1", "ip" => "20", "image" => "ubuntu/bionic64"}
 }
 
 Vagrant.configure("2") do |config|
