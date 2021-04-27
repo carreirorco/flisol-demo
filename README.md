@@ -8,8 +8,7 @@ cd flisol-demo
 ## Crie uma chave ssh chamada flisol
 
 ```bash
-ssh-keygen -q -f flisol -N ""
-chmod 400 flisol flisol.pub
+ssh-keygen -q -f flisol -P ""
 ```
 
 ## Inicie as maquinas virtuais
@@ -18,4 +17,14 @@ chmod 400 flisol flisol.pub
 vagrant up
 ```
 
+## Verifique se as VMs estao respondendo
 
+```bash
+ansible servers -m ping
+```
+
+## Brinque com os playbooks
+
+```bash
+ansible-playbook common.yml
+```
